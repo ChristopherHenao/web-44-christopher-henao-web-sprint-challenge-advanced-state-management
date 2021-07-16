@@ -19,9 +19,6 @@ const AddForm = (props) => {
         });
     }
 
-    // const handleSetErrorMessage = (err) => {
-    //     (setErrorMessage(err))
-    // }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -29,6 +26,20 @@ const AddForm = (props) => {
             props.setErrorMessage("Name, position and nickname fields are required.")
             // errorMessage = "Name, position and nickname fields are required.";
         }
+
+        props.addSmurf({
+            name: state.name,
+            position: state.position,
+            nickname: state.nickname,
+            description: state.description
+        })
+
+        setState({
+            name:"",
+            position:"",
+            nickname:"",
+            description:""
+        })
     }
 
     // let errorMessage = "";
