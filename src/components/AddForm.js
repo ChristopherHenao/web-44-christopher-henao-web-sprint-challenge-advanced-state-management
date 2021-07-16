@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { errorMessage, addSmurf, setErrorMessage } from './../actions/index'
+import { addSmurf, setErrorMessage } from './../actions/index'
 
 const AddForm = (props) => {
+    
+    // State for form values
     const [state, setState] = useState({
         name:"",
         position:"",
@@ -10,8 +12,8 @@ const AddForm = (props) => {
         description:""
     });
 
-    console.log(props)
-
+    
+    // input onChange function
     const handleChange = e => {
         setState({
             ...state,
@@ -22,9 +24,9 @@ const AddForm = (props) => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        
         if (state.name === "" || state.position === "" || state.nickname === "") {
             props.setErrorMessage("Name, position and nickname fields are required.")
-            // errorMessage = "Name, position and nickname fields are required.";
         }
 
         props.addSmurf({
@@ -42,7 +44,6 @@ const AddForm = (props) => {
         })
     }
 
-    // let errorMessage = "";
 
     return(<section>
         <h2>Add Smurf</h2>
